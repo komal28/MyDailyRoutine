@@ -1,4 +1,4 @@
-package com.mydailyroutine.activity
+package com.mydailyroutine.ui.activity
 
 import android.animation.Animator
 import android.content.Intent
@@ -33,7 +33,7 @@ class Splash : AppCompatActivity() {
                                 Animator.AnimatorListener {
                                 override fun onAnimationEnd(p0: Animator?) {
 
-                                    val intent = Intent(this@Splash, Register::class.java)
+                                    val intent = Intent(this@Splash, Login::class.java)
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                                     startActivity(intent)
