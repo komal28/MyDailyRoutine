@@ -3,6 +3,7 @@ package com.mydailyroutine.ui.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import com.mydailyroutine.R
 import com.mydailyroutine.databinding.ActivityLoginBinding
@@ -24,8 +25,11 @@ class Login : AppCompatActivity(), LoginListener {
         toast("Login Started")
     }
 
-    override fun onSuccess() {
+    override fun onSuccess(loginResponse: LiveData<String>) {
         toast("Login Success")
+        loginResponse.observe(this, {
+            toast(it)
+        })
     }
 
     override fun onFailure(message: String) {

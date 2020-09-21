@@ -2,6 +2,7 @@ package com.mydailyroutine.ui.viewmodel
 
 import android.view.View
 import androidx.lifecycle.ViewModel
+import com.mydailyroutine.data.repository.loginRepo
 import com.mydailyroutine.ui.Interface.LoginListener
 
 class LoginViewModel :ViewModel()
@@ -18,7 +19,9 @@ class LoginViewModel :ViewModel()
             listener?.onFailure("Invalid email or password")
             return
         }
-        listener?.onSuccess()
-
+        val loginResponse = loginRepo().userLogin(userName!!, password!!)
+        listener?.onSuccess(loginResponse)
     }
+
+    
 }
